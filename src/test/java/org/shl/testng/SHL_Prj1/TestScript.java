@@ -20,7 +20,7 @@ public class TestScript {
   @Test
   public void Login()
   {
-      
+      System.out.println("test");
   }
   
   @AfterMethod
