@@ -1,34 +1,24 @@
 package org.shl.testng.SHL_Prj1;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
+import utilities.BaseClass;
 import utilities.Constants;
+import utilities.Initialiser;
 import utilities.Launcher;
+import utilities.WaitExpectedConditions;
 
-public class TestScript {
-    Launcher Launch=new Launcher();
-    WebDriver Driver;
-  @BeforeMethod
-  public void Launch_Browser() throws Exception 
-  {
-      Launch.launchBrowser("Chrome");
-      Driver=Launch.Go_To_Url(Constants.URL);
-      
-  }
-  
-  @Test
-  public void Login()
-  {
-	  
-	  System.out.println("First Branch");
-	  System.out.println("Changes in first_branch");
-      
-  }
-  
-  @AfterMethod
-  public void Close_Browser()
-  {
-      Driver.quit();
-  }
+public class TestScript extends Initialiser {
+	@Test
+	public void TestPages() {
+		homePage.CancelModal();
+		homePage.search(Constants.EARPHONES);
+		int highestRating=productPage.getHighestRating();
+		productPage.getRatings(highestRating);
+	}
 }

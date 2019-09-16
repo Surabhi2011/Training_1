@@ -4,13 +4,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BaseClass {
-
+    WebDriver driver;
     WebDriverWait wait;
-    
+    public BaseClass(WebDriver driver,WebDriverWait wait) {
+    	this.driver=driver;
+    	this.wait=wait;
+    }
 	public void sendInfo(WebElement key,String TextToEnter) {
 		key.sendKeys(TextToEnter);
 	}
@@ -22,6 +26,7 @@ public class BaseClass {
 	public void clear(WebElement TextBox) {
 		TextBox.clear();
 	}
+	
 	public void waitCondition(WaitExpectedConditions conditions,By locator,WebDriver driver,int timeOut) {
 	       wait=new WebDriverWait(driver,timeOut);
 	        switch (conditions){
@@ -29,8 +34,13 @@ public class BaseClass {
 	                            wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 	                            break;
 	        case ELEMENT_TO_BE_CLICKABLE: 
-	                          wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-	                          break;    
+	                            wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	                            break; 
+	        case VISIBILITY_OF: 
+                                wait.until(ExpectedConditions.visibilityOf(driver.findElement(locator)));
+                                break; 
+	        
 	        }
 	    }
+	
 }

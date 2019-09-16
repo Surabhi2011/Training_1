@@ -10,7 +10,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class Launcher {
 WebDriver driver;
 	
-	public void launchBrowser(String BrowserName) throws Exception {
+	public WebDriver launchBrowser(String BrowserName) throws Exception {
 		switch(BrowserName) {
 		case  "Chrome": WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
@@ -25,10 +25,11 @@ WebDriver driver;
 			throw new Exception("pass valid browser name");
 		}
 		driver.manage().window().maximize();	
+		return driver;
 		
 }
-public WebDriver Go_To_Url(String URL) {
+/*public WebDriver Go_To_Url(String URL) {
 	driver.get(URL);
 	return driver;
-}
+}*/
 }
