@@ -20,7 +20,8 @@ public class Compare extends BaseClass{
 	
 	//Prints the product name and price with lowest price
 
-	public void makeComparison(int size) {
+	public void makeComparison(int size,String TestName) {
+
 	int price=0;
 	int lowestprice=10000;
 	String LowProduct="";
@@ -33,6 +34,7 @@ public class Compare extends BaseClass{
 	    	LowProduct=Product;
 	    }
 	}
+	logfile.log(TestName,"Get The ProductName with lowest price");
 	System.out.println(LowProduct);
 	System.out.println(lowestprice);
 }

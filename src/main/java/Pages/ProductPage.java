@@ -22,13 +22,12 @@ public class ProductPage extends BaseClass{
     
     //get the highest ratings among all ratings
 	 
-    public int getHighestRating() 
+    public int getHighestRating(String TestName) 
     {
 		
-        waitCondition(WaitExpectedConditions.VISIBILITY_OF_ELEMENT_LOCATED,waitPage,driver,10);
-		//wait.until(ExpectedConditions.titleIs("Earphones - Buy Products Online at Best Price in India - All Categories | Flipkart.com"));
+        waitCondition(WaitExpectedConditions.VISIBILITY_OF_ELEMENT_LOCATED,waitPage,10);
 		ArrayList<WebElement> rating=new ArrayList<WebElement>();
-		rating=(ArrayList<WebElement>) driver.findElements(By.className("_38sUEc"));
+		rating=(ArrayList<WebElement>) driver.findElements(By.xpath("//div//span[contains(@id,'productRating')]/following-sibling::span"));
 		int highestrating=0;
 		int numrating;
 		for(int k=0;k<rating.size();k++) {
@@ -38,12 +37,13 @@ public class ProductPage extends BaseClass{
 				highestrating=numrating;
 			}
 		}
+		logfile.log(TestName,"Get Highest Rating");
 		return highestrating;
 	}
 
 	//Get the product name and start rating of product with highest Rating
 	
-    public void getRatings(int highestrating) {
+    public void getRatings(int highestrating,String TestName) {
 
 		ArrayList<WebElement> list=new ArrayList<WebElement>();
 		list=(ArrayList<WebElement>) driver.findElements(By.xpath("//div[@data-id]"));
@@ -59,16 +59,19 @@ public class ProductPage extends BaseClass{
 				NumberOfRatings=0;
 			}
 			try{
-				starrating=Float.parseFloat(product.findElement(By.className("hGSR34")).getText());
+				starrating=Float.parseFloat(product.findElement(By.xpath(".//span[contains(@id,'productRating')]")).getText());
 			}
 			catch(Exception e) {
 				starrating=0;
 			}
 
 			if(NumberOfRatings==highestrating) {
+				
 				System.out.println("Product Name: "+ProductName+"\nProduct Ratings: "+NumberOfRatings+"\nProduct StarRating: "+starrating);
+				
+				
 			}
-
+			logfile.log(TestName,"Get Ratings");
 		}
 	}
 }

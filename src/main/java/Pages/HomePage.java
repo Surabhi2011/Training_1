@@ -29,32 +29,30 @@ public class HomePage extends BaseClass
 		
 	}
 	//Cancels the modal box that pops up on site loading
-	public void CancelModal() {
+	public void cancelModal(String methodName) {
 		try {
 		click(driver.findElement(CancelPopUp));}
 		catch(Exception e) {
 			System.out.println(e);
 		}
+		logfile.log(methodName,"Cancel Modal");
 	}
 	//Enters the string on the search box and clicks on search
-	public void search(String textToEnter)
+	public void search(String textToEnter,String TestName)
 	{
 		sendInfo(driver.findElement(SendInfo), textToEnter);
 		click(driver.findElement(Search));
-		
+		logfile.log(TestName,"Search the product");
 	}
 	
 	//MouseHover over Electronics and then Compact & Bridge Cameras and clicks on it
-	public void mouseHover()
+	public void mouseHover(String TestName)
 	{
-		Actions act = new Actions(driver);
-		Action set1 = act.moveToElement(driver.findElement(Electronics)).build();
-		set1.perform();
-		waitCondition(condition.VISIBILITY_OF,Camera,driver,10);
-		Action set2 = act.moveToElement(driver.findElement(Camera)).click().build();
-		set2.perform();
-		waitCondition(condition.VISIBILITY_OF_ELEMENT_LOCATED,CameraAcc,driver,10);
-		
+		performHover(Electronics);
+		waitCondition(condition.VISIBILITY_OF,Camera,10);
+		performHoverAndClick(Camera);
+		waitCondition(condition.VISIBILITY_OF_ELEMENT_LOCATED,CameraAcc,10);
+		logfile.log(TestName,"MouseHover");
 		
 	}
 

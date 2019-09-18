@@ -28,14 +28,12 @@ public class Initialiser {
     	l_Browser=new Launcher();
     	driver=l_Browser.launchBrowser("Chrome");
         driver.get(Constants.URL);}
-    	catch(Exception e) {
+    	catch(Exception e) 
+	   {
     		System.out.println(e);
     	}
     	wait = new WebDriverWait(driver, 10);
-    	homePage=new HomePage(driver,wait);
-    	productPage=new ProductPage(driver,wait);
-    	cameraPage=new Product(driver, wait);
-    	comparePage=new Compare(driver,wait);
+    	
     }
 
 	@AfterClass
