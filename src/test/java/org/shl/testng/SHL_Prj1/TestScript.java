@@ -15,7 +15,8 @@ import utilities.WaitExpectedConditions;
 
 public class TestScript extends Initialiser {
 	@Test
-	public void TestPages() {
+	public void TestPages() 
+	{
 		homePage.CancelModal();
 		homePage.search(Constants.EARPHONES);
 		int highestRating=productPage.getHighestRating();

@@ -6,7 +6,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import Pages.HomePage;
-import Pages.Camera;
+import Pages.Product;
+import utilities.Constants;
 import utilities.Initialiser;
 import utilities.WaitExpectedConditions;
 public class TestScript2 extends Initialiser
@@ -16,9 +17,9 @@ public class TestScript2 extends Initialiser
 	{    
 		homePage.CancelModal();
 		homePage.mouseHover();
-		cameraPage.addtoCompare(3);
+		cameraPage.addtoCompare(Constants.NUMBER_OF_ELEMENTS);
 		cameraPage.ClickCompare();
-		comparePage.makeComparison(3);
+		comparePage.makeComparison(Constants.NUMBER_OF_ELEMENTS);
 	}
 	
 }

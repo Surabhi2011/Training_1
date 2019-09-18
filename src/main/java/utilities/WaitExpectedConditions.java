@@ -2,10 +2,9 @@ package utilities;
 
 public enum WaitExpectedConditions {
 	 
-    ELEMENT_TO_BE_CLICKABLE, 
-    PRESENCE_OF_ELEMENT,
-    VISIBILITY_OF,
-     GET_TITLE
+	PRESENCE_OF_ELEMENT, 
+    VISIBILITY_OF_ELEMENT_LOCATED,
+    VISIBILITY_OF
     
 }
  	

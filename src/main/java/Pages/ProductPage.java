@@ -1,22 +1,17 @@
 package Pages;
-
-import java.awt.List;
 import java.util.ArrayList;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import utilities.BaseClass;
 import utilities.WaitExpectedConditions;
 
 public class ProductPage extends BaseClass{
-	WebDriver driver;
-	WebDriverWait wait;
+	private WebDriver driver;
+	private WebDriverWait wait;
     WaitExpectedConditions condition;
-    public By waitPage=By.xpath("//span[text()='Filters']");
+    private By waitPage=By.xpath("//span[text()='Filters']");
 	public ProductPage(WebDriver driver,WebDriverWait wait) {
 		super(driver,wait);
 		this.driver=driver;
@@ -30,7 +25,7 @@ public class ProductPage extends BaseClass{
     public int getHighestRating() 
     {
 		
-        waitCondition(WaitExpectedConditions.ELEMENT_TO_BE_CLICKABLE,waitPage,driver,10);
+        waitCondition(WaitExpectedConditions.VISIBILITY_OF_ELEMENT_LOCATED,waitPage,driver,10);
 		//wait.until(ExpectedConditions.titleIs("Earphones - Buy Products Online at Best Price in India - All Categories | Flipkart.com"));
 		ArrayList<WebElement> rating=new ArrayList<WebElement>();
 		rating=(ArrayList<WebElement>) driver.findElements(By.className("_38sUEc"));
@@ -39,6 +34,7 @@ public class ProductPage extends BaseClass{
 		for(int k=0;k<rating.size();k++) {
 			numrating=Integer.parseInt(rating.get(k).getText().replace("(","").replace(",","").replace(")", "").trim());
 			if(numrating>highestrating) {
+				
 				highestrating=numrating;
 			}
 		}
@@ -75,6 +71,4 @@ public class ProductPage extends BaseClass{
 
 		}
 	}
-
-
 }

@@ -5,24 +5,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.PageFactoryFinder;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import utilities.BaseClass;
-import Pages.Camera;
-import utilities.Constants;
 import utilities.WaitExpectedConditions;
 
-public class HomePage extends BaseClass {
-	public By CancelPopUp=By.xpath("//button[text()='✕']");
-	public By SendInfo=By.xpath("//input[@title='Search for products, brands and more']");
-	public By Search=By.xpath("//button[@type=\"submit\"]");
-	public By Electronics=By.xpath("//span[text()='Electronics']");
-	public By Camera=By.xpath("//a[text()='Compact & Bridge Cameras']");
-	public By CameraAcc=By.xpath("//a[text()='Cameras & Accessories']");
+public class HomePage extends BaseClass
+{
+	private By CancelPopUp=By.xpath("//button[text()='✕']");
+	private By SendInfo=By.xpath("//input[@title='Search for products, brands and more']");
+	private By Search=By.xpath("//button[@type=\"submit\"]");
+	private By Electronics=By.xpath("//span[text()='Electronics']");
+	private By Camera=By.xpath("//a[text()='Compact & Bridge Cameras']");
+	private By CameraAcc=By.xpath("//a[text()='Cameras & Accessories']");
 	WebDriver driver;
 	WebDriverWait wait;
 	WaitExpectedConditions condition;
@@ -53,17 +47,13 @@ public class HomePage extends BaseClass {
 	//MouseHover over Electronics and then Compact & Bridge Cameras and clicks on it
 	public void mouseHover()
 	{
-		WebElement wb1=driver.findElement(Electronics);
-		WebElement wb2=driver.findElement(Camera);
-		
 		Actions act = new Actions(driver);
-		Action set1 = act.moveToElement(wb1).build();
+		Action set1 = act.moveToElement(driver.findElement(Electronics)).build();
 		set1.perform();
 		waitCondition(condition.VISIBILITY_OF,Camera,driver,10);
-		
-		Action set2 = act.moveToElement(wb2).click().build();
+		Action set2 = act.moveToElement(driver.findElement(Camera)).click().build();
 		set2.perform();
-		waitCondition(condition.ELEMENT_TO_BE_CLICKABLE,CameraAcc,driver,10);
+		waitCondition(condition.VISIBILITY_OF_ELEMENT_LOCATED,CameraAcc,driver,10);
 		
 		
 	}

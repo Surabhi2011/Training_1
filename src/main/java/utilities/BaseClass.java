@@ -9,8 +9,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BaseClass {
-    WebDriver driver;
-    WebDriverWait wait;
+   private WebDriver driver;
+   private WebDriverWait wait;
     public BaseClass(WebDriver driver,WebDriverWait wait) {
     	this.driver=driver;
     	this.wait=wait;
@@ -33,7 +33,7 @@ public class BaseClass {
 	        case PRESENCE_OF_ELEMENT:
 	                            wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 	                            break;
-	        case ELEMENT_TO_BE_CLICKABLE: 
+	        case VISIBILITY_OF_ELEMENT_LOCATED: 
 	                            wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	                            break; 
 	        case VISIBILITY_OF: 

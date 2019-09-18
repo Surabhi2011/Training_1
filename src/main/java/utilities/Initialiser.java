@@ -6,7 +6,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import Pages.HomePage;
 import Pages.ProductPage;
-import Pages.Camera;
+import Pages.Product;
 import Pages.Compare;
 import logs.CreateLog;
 
@@ -18,14 +18,14 @@ public class Initialiser {
 	public String B_Name;
 	public HomePage homePage;
 	public ProductPage productPage;
-	public Camera cameraPage;
+	public Product cameraPage;
 	public Compare comparePage;
 
 	
    @BeforeClass
     public void LaunchBrowser() {
+	   try {
     	l_Browser=new Launcher();
-    	try {
     	driver=l_Browser.launchBrowser("Chrome");
         driver.get(Constants.URL);}
     	catch(Exception e) {
@@ -34,7 +34,7 @@ public class Initialiser {
     	wait = new WebDriverWait(driver, 10);
     	homePage=new HomePage(driver,wait);
     	productPage=new ProductPage(driver,wait);
-    	cameraPage=new Camera(driver, wait);
+    	cameraPage=new Product(driver, wait);
     	comparePage=new Compare(driver,wait);
     }
 
