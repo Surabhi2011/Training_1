@@ -16,26 +16,28 @@ import utilities.Constants;
 import utilities.Initialiser;
 import utilities.Launcher;
 import utilities.WaitExpectedConditions;
-
+/**
+ * This is the test script for first scenario
+ * @author surabhi.srivastava
+ *
+ */
 public class TestScript extends Initialiser {
 	@BeforeClass
 	public void MakeObjects() {
-		homePage=new HomePage(driver,wait);
-    	productPage=new ProductPage(driver,wait);
+		homePage = new HomePage(driver, wait);
+		productPage = new ProductPage(driver, wait);
 	}
+
 	@Test
-	public void TestFirstScenario(Method method) 
-	{
+	public void TestFirstScenario(Method method) {
 		try {
-		
-		homePage.cancelModal(method.getName());
-		homePage.search(Constants.EARPHONES,method.getName());
-		int highestRating=productPage.getHighestRating(method.getName());
-		productPage.getRatings(highestRating,method.getName());
-		}
-		catch(Exception e) {
+
+			homePage.cancelModal(method.getName());
+			homePage.search(Constants.EARPHONES, method.getName());
+			productPage.getHighestRating(method.getName());
+		} catch (Exception e) {
 			System.out.println(method.getName());
-			logfile.log(method.getName(),e.toString());
+			logfile.log(method.getName(), e.toString());
 		}
 	}
 }
